@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='accountpage.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Account Settings</title>
+  </head>
+  <body>
+    <div class="containernav">
+      <div class="navbar">
+          <nav>
+              <ul id="MenuItems">
+                  <li><a href="{{ url_for('index')}}">Home</a></li>
+                  <li><a href="">About</a></li>
+                  <li><a href="{{ url_for('product') }}">Product</a></li>
+                  <li><a href="">Contact</a></li>
+                  <li><a href="{{ url_for('login') }}">Account</a></li>
+              </ul>
+          </nav>
+      </div>
+    </div>
+    <h1>Account Settings</h1>
+    <ul>
+      <li><a href="#myaccount">My Account</a></li>
+      <li><a href="#myorders">My Orders</a></li>
+      <li><a href="#policy">Policy</a></li>
+    </ul>
+      {% if password_changed %}
+        <div id="popup" class="hidden">
+          <div id="popup-container">
+            <h2>Password changed successfully</h2>
+            <button id="popup-close-button">Close</button>
+          </div>
+        </div>
+      {% endif %}
+    <section id="myaccount">
+      <h2>My Account</h2>
+      <form method="POST" action="/changepassword">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ email }}"><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="********"><br>  
+        <button id="save-changes-button" type="submit">Save Changes</button>
+      </form>
+    </section>
+    
+    <section id="myorders">
+      <h2>My Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in user_orders %}
+            <tr>
+                <td>{{ order[0] }}</td>
+                <td>{{ order[2] }}</td>
+                <td>{{ order[3] }}</td>
+                <td>£{{ order[4] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    
+    <section id="policy">
+      <h2>Policy</h2>
+      <p>Here are the terms and conditions of using our website:</p>
+      <ul>
+        <li>Joe is great.</li>
+        <li>Don't you agree?</li>
+        <li>This is awesome.</li>
+        <li>What a great site.</li>
+      </ul>
+    </section>
+    
+    <div class="logout">
+      <a href="/logout">Logout</a>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $('#save-changes-button').click(function(event) {
+          $('#popup').removeClass('hidden');
+        });
+    
+        $('#popup-close-button').click(function() {
+          $('#popup').addClass('hidden').hide();
+        });
+      });
+    </script>
+   
+  </body>
+</html>

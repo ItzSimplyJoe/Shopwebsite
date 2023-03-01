@@ -1,0 +1,260 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+    background-color: #f2f2f2;
+    scroll-behavior: smooth;
+  }
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin: 30px 0;
+  }
+ul {
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+  }
+  li {
+    margin: 10px;
+    list-style: none;
+    text-decoration: none;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  } 
+  a:hover {
+    background-color: #333;
+    color: #f2f2f2;
+  }
+  section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  label {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  button[type="submit"] {
+    background-color: #333;
+    color: #f2f2f2;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #333;
+    color: #f2f2f2;
+  }
+  
+  td {
+    vertical-align: top;
+  }
+  ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+
+  .container{
+    width:85%;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+/*-------------------------------- Nav Bar --------------------------------*/
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.navbar ul{
+    flex: 1;
+    text-align: right;
+}
+.navbar ul li{
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+}
+.navbar ul li a{
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 8px 0;
+}
+.navbar ul li a:hover{
+    color: maroon;
+    background: #f2f2f2; 
+}
+.navbar ul li::after{
+    content: '';
+    height: 2px;
+    background: maroon;
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
+}
+
+/*-------------------------------- Logout Button --------------------------------*/
+.logout{
+    width: 100%;
+    height:100px;
+    background-color: #f2f2f2;
+    text-align: center;
+    padding-top: 30px;
+    align-items: center;
+}
+
+.logout a{
+  text-decoration: none;
+  color: #f2f2f2;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.logout a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+/*-------------------------------- Popup Section --------------------------------*/
+
+/* .popup {
+  align-items: center;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  z-index: 999;
+  border-radius: 7px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.popup h2 {
+  margin-top: 0;
+}
+.popup-close-button {
+  position: relative;
+  display: inline-block;
+  margin: 8px;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: maroon;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid maroon;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 maroon;
+}
+
+.popup-close-button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 maroon;
+}
+
+.popup-close-button:active {
+  transform: scale(0.9);
+} */
+
+.hidden {
+  display: none;
+}
+
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#popup-close-button {
+  margin-top: 10px;
+}

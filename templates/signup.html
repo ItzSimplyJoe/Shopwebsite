@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='loginandsignup.css') }}">
+    <script src="{{ url_for('static', filename='signup.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Jatie's Shop</title>
+</head>
+<body>
+    <div class="containernav">
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="{{ url_for('index')}}">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="{{ url_for('product') }}">Product</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="{{ url_for('login') }}">Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="singup">Sign Up</h1>
+            <form method="POST" action="/signup">
+                <div class="inputBox">
+                    <input type="email" name="email" required="required">
+                    <span>Email</span>
+                </div>
+
+                <div class="inputBox">
+                    <input type="password" name="password" required="required">
+                    <span>Password</span>
+                </div>
+                <button type="submit" class="enter">Submit</button>
+                <a href="/login">Already have an account?<br>Login here!</a>
+            </form>
+            <div id="popup" class="popup">
+                <h2>Email Already in Use!</h2>
+                <button id="popup-close-button" class="popup-close-button">Close</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#popup').hide();
+            {% if inuse %}
+                $('#popup').show();
+            {% endif %}
+            $('#popup-close-button').click(function() {
+                $('#popup').hide();
+            });
+        });
+    </script>
+</body>
+</html>

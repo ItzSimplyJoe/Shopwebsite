@@ -1,0 +1,228 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #f1f1f1;
+}
+.container{
+    width:85%;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+/*-------------------------------- Nav Bar --------------------------------*/
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.navbar ul{
+    flex: 1;
+    text-align: right;
+}
+.navbar ul li{
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+}
+.navbar ul li a{
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 8px 0;
+}
+.navbar ul li a:hover{
+    color: maroon;
+}
+.navbar ul li::after{
+    content: '';
+    height: 2px;
+    background: maroon;
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
+}
+/*-------------------------------- Shopping Cart --------------------------------*/
+.cart{
+    margin-right: 10%;
+    margin-left: 50%;
+}
+.cart img{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: maroon;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-------------------------------- Popup Section --------------------------------*/
+.popup {
+    align-items: center;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    z-index: 999;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.popup h2 {
+    margin-top: 0;
+}
+.popup-close-button {
+    position: relative;
+    display: inline-block;
+    margin: 8px;
+    margin-left: 281px;
+    margin-right: 281px;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: maroon;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid maroon;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 maroon;
+  }
+  
+.popup-close-button:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 maroon;
+  }
+  
+.popup-close-button:active {
+    transform: scale(0.9);
+  }
+
+/*-------------------------------- Products Section --------------------------------*/
+
+.mainproducts{
+    width:100%;
+    display: flex;
+    height: 1000px;
+    background: #c2c2c2;
+}
+
+.featuredproducts{
+    background: #9d9d9d;
+    width: 15%;
+    height: 100%;
+}
+
+.products{
+    background: #f1f1f1;
+    margin-top: 5%;
+    display:flex;
+    flex-wrap: wrap;
+    width: 85%;
+    height: 92.5%;
+    gap: 5%;
+}
+
+.product1{
+    margin-left: 8.5%;
+    margin-top: 2%;
+    background: #ffffff;
+    width:17%;
+    border: 2px solid #6e4a4a;
+    height: 270px;
+    border-radius: 10px;
+}
+.footerforproduct{
+    margin-top:90%;
+    background: #c2c2c2;
+    width: 100%;
+    border-top: 2px solid #6e4a4a;
+    height: 53.5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+
+.product2{
+    background: #ffffff;
+    width:17%;
+    margin-top: 2%;
+    border: 2px solid #6e4a4a;
+    height:270px ;
+    border-radius: 10px;
+}
+
+.product3{
+    background: rgb(255, 255, 255);
+    width:17%;
+    margin-top: 2%;
+    height: 270px;
+    border: 2px solid #6e4a4a;
+    border-radius: 10px;
+}
+
+.product4{
+    background: #ffffff;
+    width:17%;
+    margin-top: 2%;
+    height: 270px;
+    border: 2px solid #6e4a4a;
+    border-radius: 10px;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.nav ul{
+    flex: 1;
+    text-align: right;
+}
+
+.nav ul li{
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+}
+
+.navbar ul li a{
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 8px 0;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="{{ url_for('product') }}">Product</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="{{ url_for('login') }}">Account</a></li>
+                </ul>
+            </nav>
+            <div id="popup" class="popup">
+                <h2>Item Added to Cart!</h2>
+                <button id="popup-close-button" class="popup-close-button">Close</button>
+            </div>
+            <div class = "cart">
+                <a href="cart.html"><img src="{{url_for('static', filename='cart.png')}}" width="30px" height="30px"></a>
+                <div class="cart-count">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="mainproducts">
+        <div class="featuredproducts">
+            hallo world
+        </div class = "featuredproducts">
+        <div class="products">
+            <div class="product1">
+                hello
+                <div class="footerforproduct">
+                    wow
+                </div>
+            </div>
+            <div class="product2">
+                hello
+                <div class="footerforproduct">
+                    wow
+                </div>
+            </div>
+            <div class="product3">
+                hello
+                <div class="footerforproduct">
+                    wow
+                </div>
+            </div>
+            <div class="product4">
+                hello
+                <div class="footerforproduct">
+                    wow
+                </div>
+            </div>
+        </div>
+        </div>
+
+</body>
+</html>

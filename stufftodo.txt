@@ -1,0 +1,12 @@
+Stuff to do:
+
+Home page
+About page
+Product Page with list of stuff to sell
+Each product Page
+Contact Page
+Account page
+cart page
+checkout page
+payment processing
+backend to link shtuff together
