@@ -5,32 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='loading.css') }}">
     <title>Jatie's Shop</title>
 </head>
 <body>
-    <div class="container">
+    <div class="loading" id="loading">
+        <div class="load1"></div>
+        <div class="load2"></div>
+        <div class="load3"></div>
+        <div class="load4"></div>
+        <div class="load5"></div>
+        <div class="load6"></div>
+        <div class="load7"></div>
+        <div class="load8"></div>
+        <div class="load9"></div>
+    </div>
+
+    <div class="container" id="content" style="display:none;">
         <div class="navbar">
             <nav>
                 <ul id="MenuItems">
                     <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
                     <li><a href="{{ url_for('product') }}">Product</a></li>
                     <li><a href="">Contact</a></li>
                     <li><a href="{{ url_for('login') }}">Account</a></li>
                 </ul>
             </nav>
-            <div id="popup" class="popup">
-                <h2>Item Added to Cart!</h2>
-                <button id="popup-close-button" class="popup-close-button">Close</button>
-            </div>
-            <div class = "cart">
+            <div class="cart">
                 <a href="cart.html"><img src="{{url_for('static', filename='cart.png')}}" width="30px" height="30px"></a>
                 <div class="cart-count">0</div>
             </div>
         </div>
     </div>
-    <button class="add-to-cart-button">Add to Cart</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(window).on('load', function() {
+        $('#loading').fadeOut(5000, function() {
+            $('#content').fadeIn(500);
+        });
+    });
+
+</script>
 </body>
-<script src="{{url_for('static',filename = 'main.js')}}"></script>
 </html>

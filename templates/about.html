@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='about.css')}}">
+    <title>Jatie's Shop</title>
+</head>
+<body>
+    <div class="container" id="content">
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="{{ url_for('product') }}">Product</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="{{ url_for('login') }}">Account</a></li>
+                </ul>
+            </nav>
+            <div class="cart">
+                <a href="cart.html"><img src="{{url_for('static', filename='cart.png')}}" width="30px" height="30px"></a>
+                <div class="cart-count">{{ cart_count }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="featured">
+        <h1>Featured Products</h1>
+        <div class="row">
+            <div class="col-4">
+                <img src="{{url_for('static', filename='product.png')}}">
+                <h4>Red T-Shirt</h4>
+                <p>£50.00</p>
+                <a href="{{ url_for('addtocart', id=1) }}" class="btn btn-primary">Add to Cart</a>
+            </div>
+            <div class="col-4">
+                <img src="{{url_for('static', filename='product.png')}}">
+                <h4>Red T-Shirt</h4>
+                <p>£50.00</p>
+                <a href="{{ url_for('addtocart', id=1) }}" class="btn btn-primary">Add to Cart</a>
+            </div>
+            <div class="col-4">
+                <img src="{{url_for('static', filename='product.png')}}">
+                <h4>Red T-Shirt</h4>
+                <p>£50.00</p>
+                <a href="{{ url_for('addtocart', id=1) }}" class="btn btn-primary">Add to Cart</a>
+            </div>
+            <div class="col-4">
+                <img src="{{url_for('static', filename='product.png')}}">
+                <h4>Red T-Shirt</h4>
+                <p>£50.00</p>
+                <a href="{{ url_for('addtocart', id=1) }}" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+    <h2>About us</h2>
+    <div class="about">
+        <div class="box1" style="display:none;">
+            <h1>Test</h1>
+            <p>Test text</p>
+        </div>
+        <div class="box2" style="display:none;">
+            <h1>Test</h1>
+            <p>Test text</p>
+        </div>
+        <div class="box3" style="display:none;">
+            <h1>Test</h1>
+            <p>Test text</p>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 500) {
+            $('.box1').slideDown(2000);
+        }
+        if ($(this).scrollTop() > 500) {
+            $('.box2').slideDown(2000);
+        }
+        if ($(this).scrollTop() > 500) {
+            $('.box3').slideDown(2000);
+        }
+    });
+    $(window).scroll(function() {
+        if ($(this).scrollTop() < 500) {
+            $('.box1').slideUp(1000);
+        }
+        if ($(this).scrollTop() < 500) {
+            $('.box2').slideUp(1000);
+        }
+        if ($(this).scrollTop() < 500) {
+            $('.box3').slideUp(1000);
+        }
+    });
+
+</script>
+</body>
+</html>

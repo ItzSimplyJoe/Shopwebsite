@@ -190,8 +190,6 @@ ul {
   align-items: center;
   display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
   border: 1px solid black;
@@ -201,10 +199,33 @@ ul {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 }
-.popup h2 {
-  margin-top: 0;
+*/
+
+.hidden {
+  display: none;
 }
-.popup-close-button {
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 7px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#popup-close-button {
   position: relative;
   display: inline-block;
   margin: 8px;
@@ -224,37 +245,11 @@ ul {
   box-shadow: inset 0 0 0 0 maroon;
 }
 
-.popup-close-button:hover {
+#popup-close-button:hover {
   color: white;
   box-shadow: inset 0 -100px 0 0 maroon;
 }
 
-.popup-close-button:active {
+#popup-close-button:active {
   transform: scale(0.9);
-} */
-
-.hidden {
-  display: none;
-}
-
-#popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#popup-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-#popup-close-button {
-  margin-top: 10px;
-}
+} 

@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from databasecommands import *
 import secrets
+import time
 
 app = Flask(__name__)
 
 app.secret_key = secrets.token_hex(16)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -61,23 +63,21 @@ def Accountpage():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    cart_count = 0
+    if 'cart' in session:
+        cart = session['cart']
+        cart_count = len(cart)
+    return render_template('index.html', cart_count=cart_count)
 
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
 
-@app.route('/add-to-cart/<item>')
-def add_to_cart(item):
-    if 'cart' not in session:
-        session['cart'] = {}
-    session['cart'][item] = session['cart'].get(item, 0) + 1
-    return 'Item added to cart!'
-
 @app.route('/product')
 def product():
-    return render_template('product.html')
+    cart_count = len(cart_count)
+    return render_template('product.html', cart_count = cart_count)
 
 @app.route('/changepassword', methods=['GET', 'POST'])
 def changepassword():
@@ -114,7 +114,33 @@ def change_password():
         return redirect('/Accountpage?password_changed=True')
     else:
         return redirect('/Accountpage?password_changed=False')
-    
+
+@app.route('/about')
+def about():
+    cart_count = 0
+    if 'cart' in session:
+        cart = session['cart']
+        cart_count = len(cart)
+    return render_template('about.html', cart_count=cart_count)
+
+@app.route('/add-to-cart/<int:id>')
+def addtocart(id):
+    cart_count = 0
+    if 'cart' in session:
+        cart = session['cart']
+        cart_count = len(cart)
+    cart_count = cart_count + 1
+    try:
+        userid = session.get('user_id')
+        user_data = checkuserbasedonid(userid)
+        email = user_data[0][1]
+        itemid = request.args.get('id')
+        addtobasket(email,itemid)
+    except:
+        if 'cart' not in session:
+            session['cart'] = []
+            session['cart'].append(id)
+    return redirect(url_for(request.endpoint, id=id, cart_count=cart_count))
 
 if __name__ == '__main__':
     app.run(debug=True)
