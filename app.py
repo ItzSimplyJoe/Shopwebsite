@@ -60,7 +60,13 @@ def Accountpage():
 
     else:
         return redirect(url_for('login'))
-
+@app.route('/cart')
+def cart():
+    cart_count = 0
+    if 'cart' in session:
+        cart = session['cart']
+        cart_count = len(cart)
+    return render_template('cart.html', cart_count=cart_count)
 @app.route('/')
 def index():
     cart_count = 0
@@ -76,7 +82,10 @@ def logout():
 
 @app.route('/product')
 def product():
-    cart_count = len(cart_count)
+    cart_count = 0
+    if 'cart' in session:
+        cart = session['cart']
+        cart_count = len(cart)
     return render_template('product.html', cart_count = cart_count)
 
 @app.route('/changepassword', methods=['GET', 'POST'])
@@ -124,7 +133,7 @@ def about():
     return render_template('about.html', cart_count=cart_count)
 
 @app.route('/add-to-cart/<int:id>')
-def addtocart(id):
+def addtocartfromabout(id):
     cart_count = 0
     if 'cart' in session:
         cart = session['cart']
@@ -140,7 +149,7 @@ def addtocart(id):
         if 'cart' not in session:
             session['cart'] = []
             session['cart'].append(id)
-    return redirect(url_for(request.endpoint, id=id, cart_count=cart_count))
+    return render_template('about.html', id=id, cart_count=cart_count)
 
 if __name__ == '__main__':
     app.run(debug=True)
