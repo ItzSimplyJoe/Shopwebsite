@@ -9,19 +9,20 @@
     <title>Account Settings</title>
   </head>
   <body>
-    <div class="containernav">
-      <div class="navbar">
-          <nav>
-              <ul id="MenuItems">
-                  <li><a href="{{ url_for('index')}}">Home</a></li>
-                  <li><a href="{{ url_for('about') }}">About</a></li>
-                  <li><a href="{{ url_for('product') }}">Product</a></li>
-                  <li><a href="">Contact</a></li>
-                  <li><a href="{{ url_for('login') }}">Account</a></li>
-              </ul>
-          </nav>
-      </div>
-    </div>
+    <header>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('product') }}">Products</a></li>
+        <li><h1>Jatie's Shop</h1></li>
+        <li><a href="{{ url_for('login') }}">Account</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="cart">
+          <a href="cart.html"><img src="{{url_for('static', filename='cart.png')}}" width="30px" height="30px"></a>
+          <div class="cart-count">0</div>
+        </li>
+    </ul>
+    </header>
     <h1>Account Settings</h1>
     <ul>
       <li><a href="#myaccount">My Account</a></li>

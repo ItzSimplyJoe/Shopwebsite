@@ -1,17 +1,25 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+* {
+	box-sizing: border-box;
 }
-body{
-    background: #f1f1f1;
+html {
+  font-size: 10px;
 }
-.container{
-    width:85%;
-    margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
+body {
+	font-family: 'Montserrat', sans-serif;
+	color: #000;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+*:focus {
+  outline: 0;
+}
+
+.main {
+	max-width: 110rem;
+	margin: 0 auto;
+	padding: 0 2rem;
 }
 /*-------------------------------- Nav Bar --------------------------------*/
 
@@ -81,33 +89,33 @@ header {
     padding: 0;
     white-space: nowrap;
   }
-  /*-------------------------------- Shopping Cart --------------------------------*/
-  .cart {
-  margin-left: 50px;
-  margin-right: 10px;
-  position: relative;
-  display: inline-block;
+/*-------------------------------- Shopping Cart --------------------------------*/
+.cart {
+	margin-left: 50px;
+	margin-right: 10px;
+	position: relative;
+	display: inline-block;
   }
   
   .cart img {
-  width: 30px;
-  height: 30px;
-  margin-top: 5px;
+	width: 30px;
+	height: 30px;
+	margin-top: 5px;
   }
   
   .cart-count {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background-color: maroon;
-  color: white;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	background-color: maroon;
+	color: white;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
   }
 /*-------------------------------- Popup Section --------------------------------*/
 .popup {

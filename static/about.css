@@ -20,6 +20,29 @@ h2{
     font-size: 40px;
     color: maroon;
 }
+* {
+	box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+	font-family: 'Montserrat', sans-serif;
+	color: #000;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+*:focus {
+  outline: 0;
+}
+
+.main {
+	max-width: 110rem;
+	margin: 0 auto;
+	padding: 0 2rem;
+}
 /*-------------------------------- Nav Bar --------------------------------*/
 
 header {

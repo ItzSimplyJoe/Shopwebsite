@@ -1,111 +1,122 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+* {
+	box-sizing: border-box;
 }
-body{
-  background: #f1f1f1;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+html {
+  font-size: 10px;
+}
+body {
+	font-family: 'Montserrat', sans-serif;
+	color: #000;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+*:focus {
+  outline: 0;
+}
+
+.main {
+	max-width: 110rem;
+	margin: 0 auto;
+	padding: 0 2rem;
 }
 /*-------------------------------- Nav Bar --------------------------------*/
 
 header {
-  line-height: 12rem;
-  height: 12rem;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  font-family: 'Oswald', sans-serif;
-}
-
-header ul::after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-header li {
-  display: inline-block;
-  width: 12.5%;
-  text-align: center;
-  text-transform: uppercase;
-  position: relative;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-header li:nth-child(4) {
-  width: 20%;
-}
-
-header li a {
-  font-weight: 900;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  position: relative;
-  color: black;
-}
-
-header li a::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 2px;
-  background-color: maroon;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.5s;
-}
-
-header li:nth-child(4) a::before {
-  display: none;
-}
-
-header li:hover a::before {
-  transform: scaleX(1);
-}
-
-header ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-}
+    line-height: 12rem;
+    height: 12rem;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  header ul::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  
+  header li {
+    display: inline-block;
+    width: 12.5%;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  header li:nth-child(4) {
+    width: 20%;
+  }
+  
+  header li a {
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    position: relative;
+    color: black;
+  }
+  
+  header li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: maroon;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s;
+  }
+  
+  header li:nth-child(4) a::before {
+    display: none;
+  }
+  
+  header li:hover a::before {
+    transform: scaleX(1);
+  }
+  
+  header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  }
 /*-------------------------------- Shopping Cart --------------------------------*/
 .cart {
-margin-left: 50px;
-margin-right: 10px;
-position: relative;
-display: inline-block;
-}
-
-.cart img {
-width: 30px;
-height: 30px;
-margin-top: 5px;
-}
-
-.cart-count {
-position: absolute;
-top: 15px;
-right: 20px;
-background-color: maroon;
-color: white;
-width: 20px;
-height: 20px;
-border-radius: 50%;
-font-size: 14px;
-display: flex;
-align-items: center;
-justify-content: center;
-}
+	margin-left: 50px;
+	margin-right: 10px;
+	position: relative;
+	display: inline-block;
+  }
+  
+  .cart img {
+	width: 30px;
+	height: 30px;
+	margin-top: 5px;
+  }
+  
+  .cart-count {
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	background-color: maroon;
+	color: white;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
 /*-------------------------------- Login --------------------------------*/
 .container{
   width:100%;
