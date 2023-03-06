@@ -1,20 +1,33 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from databasecommands import *
 import secrets
-import time
 
 app = Flask(__name__)
 
 app.secret_key = secrets.token_hex(16)
-
-
+def getuserbasket():
+    if 'logged_in' in session and session['logged_in'] == True:
+        id = session.get('user_id')
+        basket = getbasketitems(id)
+        cart_count = len(basket)
+        return basket, cart_count
+    else:
+        if 'cart' in session:
+            cart = session['cart']
+            cart_count = len(cart)
+            return cart, cart_count
+        else:
+            cart_count = 0
+            return [], cart_count
+        
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    basket,cart_count = getuserbasket()
     login_failed = False
     if request.method == 'GET':
         if 'logged_in' in session and session['logged_in'] == True:
             return redirect(url_for('Accountpage'))
-        return render_template('login.html')
+        return render_template('login.html', cart_count=cart_count)
     elif request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -23,14 +36,18 @@ def login():
         if value == True:
             session['logged_in'] = True
             session['user_id'] = id
+            basket, cart_count = getuserbasket(id)
+            for item in basket:
+                addtobasket(id, basket[item])
             return redirect(url_for('Accountpage'))
         else:
             login_failed = True
-            return render_template('login.html', login_failed=login_failed)
+            return render_template('login.html', login_failed=login_failed, cart_count=cart_count)
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
     inuse = False
+    basket,cart_count = getuserbasket()
     if request.method == 'GET':
         if 'logged_in' in session and session['logged_in'] == True:
             return redirect(url_for('Accountpage'))
@@ -43,8 +60,8 @@ def signup():
         else:
             password = encryptpassword(password)
             insert_user(email, password)
-            return render_template('login.html')
-    return render_template('signup.html', inuse=inuse)
+            return render_template('login.html', cart_count=cart_count)
+    return render_template('signup.html', inuse=inuse, cart_count=cart_count)
 
 @app.route('/Accountpage')
 def Accountpage():
@@ -56,23 +73,26 @@ def Accountpage():
         email = user_data[0][1]
         password = user_data[0][2]
         user_orders = getuserorders(id)
-        return render_template('Accountpage.html', user_orders=user_orders,email=email,password=password,password_changed=password_changed)
-
+        basket,cart_count = getuserbasket()
+        return render_template('Accountpage.html', user_orders=user_orders,email=email,password=password,password_changed=password_changed, cart_count=cart_count)
     else:
         return redirect(url_for('login'))
 @app.route('/cart')
 def cart():
-    cart_count = 0
-    if 'cart' in session:
-        cart = session['cart']
-        cart_count = len(cart)
-    return render_template('cart.html', cart_count=cart_count)
+    basket,cart_count = getuserbasket()
+    itemnames = []
+    itemquantities = []
+    itemprices = []
+    for item in basket:
+        iteminfo = getiteminfo(basket[item])
+        itemnames.append(iteminfo[1])
+        itemquantities.append(iteminfo[2])
+        itemprices.append(iteminfo[3])
+    return render_template('cart.html', itemid=basket,itemnames=itemnames,itemquatities=itemquantities,itemprices=itemprices,cart_count=cart_count)
+
 @app.route('/')
 def index():
-    cart_count = 0
-    if 'cart' in session:
-        cart = session['cart']
-        cart_count = len(cart)
+    basket,cart_count = getuserbasket()
     return render_template('index.html', cart_count=cart_count)
 
 @app.route('/logout')
@@ -82,10 +102,7 @@ def logout():
 
 @app.route('/product')
 def product():
-    cart_count = 0
-    if 'cart' in session:
-        cart = session['cart']
-        cart_count = len(cart)
+    basket,cart_count = getuserbasket()
     return render_template('product.html', cart_count = cart_count)
 
 @app.route('/changepassword', methods=['GET', 'POST'])
@@ -95,61 +112,40 @@ def changepassword():
     user_data = checkuserbasedonid(id)
     email = user_data[0][1]
     password = user_data[0][2]
+    basket,cart_count = getuserbasket()
     if request.method == 'POST':
         newpassword = request.form['password']
         if len(newpassword) < 3:
-            return render_template('Accountpage.html', email=email, password=password, password_changed=password_changed)
+            return render_template('Accountpage.html', email=email, password=password, password_changed=password_changed, cart_count=cart_count)
         else:
             newpassword = encryptpassword(newpassword)
             updatepassword(email, newpassword)
             password_changed = True
             return redirect(url_for('Accountpage', password_changed=password_changed))
-    return render_template('Accountpage.html', email=email, password=password, password_changed=password_changed)
+    return render_template('Accountpage.html', email=email, password=password, password_changed=password_changed, cart_count=cart_count)
 
-@app.route('/changepassword', methods=['POST'])
-def change_password():
-    id = session.get('user_id')
-    user_data = checkuserbasedonid(id)
-    email = user_data[0][1]
-    newpassword = request.form['password']
-    user_orders = getuserorders(id)
-    if newpassword > 8:
-        user = True
-    else:
-        user = False
-    if user:
-        newpassword = encryptpassword(newpassword)
-        updatepassword(email, newpassword)
-        return redirect('/Accountpage?password_changed=True')
-    else:
-        return redirect('/Accountpage?password_changed=False')
 
 @app.route('/about')
 def about():
-    cart_count = 0
-    if 'cart' in session:
-        cart = session['cart']
-        cart_count = len(cart)
+    basket,cart_count = getuserbasket()
     return render_template('about.html', cart_count=cart_count)
 
 @app.route('/add-to-cart/<int:id>')
 def addtocartfromabout(id):
-    cart_count = 0
-    if 'cart' in session:
-        cart = session['cart']
-        cart_count = len(cart)
-    cart_count = cart_count + 1
-    try:
+    basket,cart_count = getuserbasket()
+    if 'logged_in' in session and session['logged_in'] == True:
         userid = session.get('user_id')
-        user_data = checkuserbasedonid(userid)
-        email = user_data[0][1]
-        itemid = request.args.get('id')
-        addtobasket(email,itemid)
-    except:
-        if 'cart' not in session:
-            session['cart'] = []
-            session['cart'].append(id)
-    return render_template('about.html', id=id, cart_count=cart_count)
+        addtobasket(userid, id)
+    else:
+        if 'cart' in session:
+            cart = session['cart']
+            cart.append(id)
+            session['cart'] = cart
+        else:
+            cart = []
+            cart.append(id)
+            session['cart'] = cart
+    return render_template('about.html', id=id, cart_count=cart_count+1)
 
 if __name__ == '__main__':
     app.run(debug=True)

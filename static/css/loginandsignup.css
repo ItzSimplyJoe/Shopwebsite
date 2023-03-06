@@ -78,7 +78,9 @@ header {
   header li:nth-child(4) a::before {
     display: none;
   }
-  
+  header li:nth-child(7) a::before {
+    display: none;
+  }
   header li:hover a::before {
     transform: scaleX(1);
   }

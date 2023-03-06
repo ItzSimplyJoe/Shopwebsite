@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='accountpage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/accountpage.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Account Settings</title>
   </head>
@@ -18,8 +18,8 @@
         <li><a href="{{ url_for('login') }}">Account</a></li>
         <li><a href="#">Contact</a></li>
         <li class="cart">
-          <a href="cart.html"><img src="{{url_for('static', filename='cart.png')}}" width="30px" height="30px"></a>
-          <div class="cart-count">0</div>
+          <a href="{{ url_for('cart') }}"><img src="{{url_for('static', filename='images/cart.png')}}" width="30px" height="30px"></a>
+          <div class="cart-count">{{ cart_count }}</div>
         </li>
     </ul>
     </header>

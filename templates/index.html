@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='loading.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}">
     <title>Jatie's Shop</title>
 </head>
 <body>
@@ -32,8 +32,8 @@
         <li><a href="{{ url_for('login') }}">Account</a></li>
         <li><a href="#">Contact</a></li>
         <li class="cart">
-          <a href="cart.html"><img src="{{url_for('static', filename='cart.png')}}" width="30px" height="30px"></a>
-          <div class="cart-count">0</div>
+          <a href="{{ url_for('cart') }}"><img src="{{url_for('static', filename='images/cart.png')}}" width="30px" height="30px"></a>
+          <div class="cart-count">{{ cart_count }}</div>
         </li>
     </ul>
     </header>
@@ -41,35 +41,35 @@
     <div class="cd-slider">
       <ul>
         <li>
-          <div class="image" style="background-image:url({{ url_for('static', filename='img1.jpg') }})"></div>
+          <div class="image" style="background-image:url({{ url_for('static', filename='images/img1.jpg') }})"></div>
           <div class="content">
             <h2>Joes Awesome</h2>
             <a href="#">This is some text</a>
           </div>
         </li>
         <li>
-          <div class="image" style="background-image:url({{ url_for('static', filename='img2.jpg') }})"></div>
+          <div class="image" style="background-image:url({{ url_for('static', filename='images/img2.jpg') }})"></div>
           <div class="content">
             <h2>Joes Awesome</h2>
             <a href="#">This is some text</a>
           </div>
         </li>
         <li>
-          <div class="image" style="background-image:url({{ url_for('static', filename='img3.jpg') }})"></div>
+          <div class="image" style="background-image:url({{ url_for('static', filename='images/img3.jpg') }})"></div>
           <div class="content">
             <h2>Joes Awesome</h2>
             <a href="#">This is some text</a>
           </div>
         </li>
         <li>
-          <div class="image" style="background-image:url({{ url_for('static', filename='img4.jpg') }})"></div>
+          <div class="image" style="background-image:url({{ url_for('static', filename='images/img4.jpg') }})"></div>
           <div class="content">
             <h2>Joes Awesome</h2>
             <a href="#">This is some text</a>
           </div>
         </li>
         <li>
-          <div class="image" style="background-image:url({{ url_for('static', filename='img5.jpg') }})"></div>
+          <div class="image" style="background-image:url({{ url_for('static', filename='images/img5.jpg') }})"></div>
           <div class="content">
             <h2>Joes Awesome</h2>
             <a href="#">This is some text</a>
@@ -84,7 +84,7 @@
     </div>
     
   </div>
-  <script src="{{url_for('static', filename='index.js')}}"></script>
+  <script src="{{url_for('static', filename='js/index.js')}}"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(window).on('load', function() {

@@ -163,10 +163,10 @@ def removeitemfrombasket(email,itemid):
     conn.commit()
     conn.close()
 
-def getbasketitems(email):
+def getbasketitems(userid):
     conn = sqlite3.connect("users.db")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE email=?", (email,))
+    cur.execute("SELECT * FROM users WHERE userid=?", (userid,))
     rows = cur.fetchall()
     basket = rows[0][3]
     basket = basket.split(",")

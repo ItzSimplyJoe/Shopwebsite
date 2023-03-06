@@ -7,6 +7,28 @@
     <title>Cart</title>
 </head>
 <body>
-    dacart
+    <section id="myorders">
+        <h2>My Basket</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item Image</th>
+              <th>Item</th>
+              <th>Amount</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in itemid %}
+              <tr>
+                  <td><img src="{% static 'images/' + item + '.png' %}" alt="{{ itemid[item] }}" width="50"></td>
+                  <td>{{ itemnames[item] }}</td>
+                  <td>{{ itemquantities[item] }}</td>
+                  <td>£{{ itemprices[item] }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
 </body>
 </html>

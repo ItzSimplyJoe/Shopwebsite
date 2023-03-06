@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='about.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/about.css')}}">
     <title>Jatie's Shop</title>
 </head>
 <body>
@@ -17,8 +17,8 @@
           <li><a href="{{ url_for('login') }}">Account</a></li>
           <li><a href="#">Contact</a></li>
           <li class="cart">
-            <a href="cart.html"><img src="{{url_for('static', filename='cart.png')}}" width="30px" height="30px"></a>
-            <div class="cart-count">0</div>
+            <a href="{{ url_for('cart') }}"><img src="{{url_for('static', filename='images/cart.png')}}" width="30px" height="30px"></a>
+            <div class="cart-count">{{ cart_count }}</div>
           </li>
       </ul>
       </header>
@@ -26,25 +26,25 @@
         <h1>Featured Products</h1>
         <div class="row">
             <div class="col-4">
-                <img src="{{url_for('static', filename='product.png')}}">
+                <img src="{{url_for('static', filename='images/product.png')}}">
                 <h4>Red T-Shirt</h4>
                 <p>£50.00</p>
                 <a href="{{ url_for('addtocartfromabout', id=1) }}" class="btn btn-primary">Add to Cart</a>
             </div>
             <div class="col-4">
-                <img src="{{url_for('static', filename='product.png')}}">
+                <img src="{{url_for('static', filename='images/product.png')}}">
                 <h4>Red T-Shirt</h4>
                 <p>£50.00</p>
                 <a href="{{ url_for('addtocartfromabout', id=1) }}" class="btn btn-primary">Add to Cart</a>
             </div>
             <div class="col-4">
-                <img src="{{url_for('static', filename='product.png')}}">
+                <img src="{{url_for('static', filename='images/product.png')}}">
                 <h4>Red T-Shirt</h4>
                 <p>£50.00</p>
                 <a href="{{ url_for('addtocartfromabout', id=1) }}" class="btn btn-primary">Add to Cart</a>
             </div>
             <div class="col-4">
-                <img src="{{url_for('static', filename='product.png')}}">
+                <img src="{{url_for('static', filename='images/product.png')}}">
                 <h4>Red T-Shirt</h4>
                 <p>£50.00</p>
                 <a href="{{ url_for('addtocartfromabout', id=1) }}" class="btn btn-primary">Add to Cart</a>
