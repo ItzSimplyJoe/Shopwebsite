@@ -267,21 +267,6 @@ header {
 
 /*-------------------------------- Popup Section --------------------------------*/
 
-/* .popup {
-  align-items: center;
-  display: none;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border: 1px solid black;
-  padding: 20px;
-  z-index: 999;
-  border-radius: 7px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-}
-*/
-
 .hidden {
   display: none;
 }

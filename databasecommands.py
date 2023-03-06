@@ -150,16 +150,19 @@ def clearbasket(email):
     conn.commit()
     conn.close()
 
-def removeitemfrombasket(email,itemid):
+def removeitemfrombasket(userid,itemid):
     conn = sqlite3.connect("users.db")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE email=?", (email,))
+    cur.execute("SELECT * FROM users WHERE userid=?", (userid,))
     rows = cur.fetchall()
     basket = rows[0][3]
-    basket = basket.split(",")
-    basket.remove(str(itemid))
-    basket = ",".join(basket)
-    cur.execute("UPDATE users SET basket=? WHERE email=?", (basket,email))
+    try:
+        basket = basket.split(",")
+        basket.remove(str(itemid))
+        basket = ",".join(basket)
+    except:
+        basket = None
+    cur.execute("UPDATE users SET basket=? WHERE userid=?", (basket,userid))
     conn.commit()
     conn.close()
 
@@ -169,7 +172,10 @@ def getbasketitems(userid):
     cur.execute("SELECT * FROM users WHERE userid=?", (userid,))
     rows = cur.fetchall()
     basket = rows[0][3]
-    basket = basket.split(",")
+    try:
+        basket = basket.split(",")
+    except:
+        basket = []
     conn.close()
     return basket
 

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c76bc25f8c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cart.css')}}">
     <title>Cart</title>
 </head>
 <body>
@@ -21,10 +23,11 @@
           <tbody>
             {% for item in itemid %}
               <tr>
-                  <td><img src="{% static 'images/' + item + '.png' %}" alt="{{ itemid[item] }}" width="50"></td>
+                  <td><img src="{{url_for('static', filename='images/1.png')}}" width="50px" height="50px"></td>
                   <td>{{ itemnames[item] }}</td>
                   <td>{{ itemquantities[item] }}</td>
                   <td>£{{ itemprices[item] }}</td>
+                  <td><a href="{{ url_for('removefromcart', id=1) }}"><i class="fa-regular fa-trash-can"></i></a></td>
               </tr>
             {% endfor %}
           </tbody>

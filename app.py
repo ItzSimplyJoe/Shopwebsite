@@ -36,9 +36,7 @@ def login():
         if value == True:
             session['logged_in'] = True
             session['user_id'] = id
-            basket, cart_count = getuserbasket(id)
-            for item in basket:
-                addtobasket(id, basket[item])
+            basket, cart_count = getuserbasket()
             return redirect(url_for('Accountpage'))
         else:
             login_failed = True
@@ -84,11 +82,11 @@ def cart():
     itemquantities = []
     itemprices = []
     for item in basket:
-        iteminfo = getiteminfo(basket[item])
-        itemnames.append(iteminfo[1])
-        itemquantities.append(iteminfo[2])
-        itemprices.append(iteminfo[3])
-    return render_template('cart.html', itemid=basket,itemnames=itemnames,itemquatities=itemquantities,itemprices=itemprices,cart_count=cart_count)
+        iteminfo = getiteminfo(item)
+        itemnames.append(iteminfo[0][1])
+        itemquantities.append(1)
+        itemprices.append(iteminfo[0][3])
+    return render_template('cart.html', itemid=basket,itemnames=itemnames,itemquantities=itemquantities,itemprices=itemprices,cart_count=cart_count)
 
 @app.route('/')
 def index():
@@ -135,7 +133,10 @@ def addtocartfromabout(id):
     basket,cart_count = getuserbasket()
     if 'logged_in' in session and session['logged_in'] == True:
         userid = session.get('user_id')
-        addtobasket(userid, id)
+        try:
+            addtobasket(userid, id)
+        except:
+            return render_template('about.html', id=id, cart_count=cart_count)
     else:
         if 'cart' in session:
             cart = session['cart']
@@ -146,6 +147,19 @@ def addtocartfromabout(id):
             cart.append(id)
             session['cart'] = cart
     return render_template('about.html', id=id, cart_count=cart_count+1)
+
+@app.route('/removefromcart/<int:id>')
+def removefromcart(id):
+    basket,cart_count = getuserbasket()
+    if 'logged_in' in session and session['logged_in'] == True:
+        userid = session.get('user_id')
+        removeitemfrombasket(userid, id)
+    else:
+        if 'cart' in session:
+            cart = session['cart']
+            cart.remove(id)
+            session['cart'] = cart
+    return redirect(url_for('cart'))
 
 if __name__ == '__main__':
     app.run(debug=True)
