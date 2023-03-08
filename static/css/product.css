@@ -109,7 +109,7 @@ header {
   .cart-count {
 	position: absolute;
 	top: 15px;
-	right: 20px;
+	right: 50px;
 	background-color: maroon;
 	color: white;
 	width: 20px;

@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 html {
-  font-size: 10px;
+  font-size: 14px;
 }
 body {
 	font-family: 'Montserrat', sans-serif;
@@ -25,11 +25,11 @@ a {
 
 header {
     line-height: 12rem;
+    font-size: 10px;
     height: 12rem;
   }
   
   header h1 {
-    font-size: 2.5rem;
     font-family: 'Oswald', sans-serif;
   }
   
@@ -37,7 +37,7 @@ header {
     content: '';
     display: table;
     clear: both;
-  }
+    }
   
   header li {
     display: inline-block;
@@ -56,7 +56,7 @@ header {
   
   header li a {
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 10px;
     letter-spacing: 2px;
     position: relative;
     color: black;
@@ -90,6 +90,7 @@ header {
     margin: 0;
     padding: 0;
     white-space: nowrap;
+    gap: 20px;
   }
 /*-------------------------------- Shopping Cart --------------------------------*/
 .cart {
@@ -108,7 +109,7 @@ header {
   .cart-count {
 	position: absolute;
 	top: 15px;
-	right: 20px;
+	right: 50px;
 	background-color: maroon;
 	color: white;
 	width: 20px;
@@ -124,7 +125,7 @@ header {
   width:100%;
   margin-left:40%;
   margin-right:40%;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 h1 {
   color: maroon;

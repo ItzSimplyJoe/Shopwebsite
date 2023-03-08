@@ -7,12 +7,6 @@
 body{
     background: #f1f1f1;
 }
-.container{
-    width:85%;
-    margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
-}
 h2{
     text-align: center;
     margin-top: 50px;
@@ -53,6 +47,7 @@ header {
   header h1 {
     font-size: 2.5rem;
     font-family: 'Oswald', sans-serif;
+    color: black;
   }
   
   header ul::after {
@@ -131,7 +126,7 @@ header {
   .cart-count {
 	position: absolute;
 	top: 15px;
-	right: 20px;
+	right: 50px;
 	background-color: maroon;
 	color: white;
 	width: 20px;
@@ -142,6 +137,7 @@ header {
 	align-items: center;
 	justify-content: center;
   }
+  
 /*-------------------------------- Main Part of the page --------------------------------*/
 .about{
     width: 80%;

@@ -9,6 +9,21 @@
     <title>Cart</title>
 </head>
 <body>
+  <div class="main" id = "content" style="display:none;">
+    <header>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('product') }}">Products</a></li>
+        <li><h1>Jatie's Shop</h1></li>
+        <li><a href="{{ url_for('login') }}">Account</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="cart">
+          <a href="{{ url_for('cart') }}"><img src="{{url_for('static', filename='images/cart.png')}}" width="30px" height="30px"></a>
+          <div class="cart-count">{{ cart_count }}</div>
+        </li>
+    </ul>
+    </header>
     <section id="myorders">
         <h2>My Basket</h2>
         <table>
@@ -21,12 +36,12 @@
             </tr>
           </thead>
           <tbody>
-            {% for item in itemid %}
+            {% for item in items %}
               <tr>
-                  <td><img src="{{url_for('static', filename='images/1.png')}}" width="50px" height="50px"></td>
-                  <td>{{ itemnames[item] }}</td>
-                  <td>{{ itemquantities[item] }}</td>
-                  <td>£{{ itemprices[item] }}</td>
+                  <td><img src="{{ item.image_url }}" width="50px" height="50px"></td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>£{{ item.price }}</td>
                   <td><a href="{{ url_for('removefromcart', id=1) }}"><i class="fa-regular fa-trash-can"></i></a></td>
               </tr>
             {% endfor %}

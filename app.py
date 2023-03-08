@@ -77,16 +77,18 @@ def Accountpage():
         return redirect(url_for('login'))
 @app.route('/cart')
 def cart():
-    basket,cart_count = getuserbasket()
-    itemnames = []
-    itemquantities = []
-    itemprices = []
+    basket, cart_count = getuserbasket()
+    items = []
     for item in basket:
         iteminfo = getiteminfo(item)
-        itemnames.append(iteminfo[0][1])
-        itemquantities.append(1)
-        itemprices.append(iteminfo[0][3])
-    return render_template('cart.html', itemid=basket,itemnames=itemnames,itemquantities=itemquantities,itemprices=itemprices,cart_count=cart_count)
+        item_dict = {
+            'name': iteminfo[0][1],
+            'quantity': 1,
+            'price': iteminfo[0][3],
+            'image_url': f'/static/images/{iteminfo[0][0]}.png'
+        }
+        items.append(item_dict)
+    return render_template('cart.html', items=items, cart_count=cart_count)
 
 @app.route('/')
 def index():
