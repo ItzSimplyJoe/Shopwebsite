@@ -185,6 +185,9 @@ header {
 }
 .content h2 {
 	text-overflow: ellipsis;
+	color: #1b1b1b;
+	-webkit-text-stroke-color: grey;
+	-webkit-text-stroke-width: 1px;
 	overflow: hidden;
     font-size: 6rem;
 	transform: translateY(-30%);
@@ -194,6 +197,7 @@ header {
 }
 .content a {
 	display: inline-block;
+	color: rgba(0, 0, 0, 0.7);
 	font-size: 2rem;
 	text-transform: lowercase;
 	padding: 1.5rem;

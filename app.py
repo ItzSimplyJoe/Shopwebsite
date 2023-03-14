@@ -58,7 +58,7 @@ def signup():
         else:
             password = encryptpassword(password)
             insert_user(email, password)
-            return render_template('login.html', cart_count=cart_count)
+            return redirect(url_for('login'))
     return render_template('signup.html', inuse=inuse, cart_count=cart_count)
 
 @app.route('/Accountpage')
@@ -72,7 +72,7 @@ def Accountpage():
         password = user_data[0][2]
         user_orders = getuserorders(id)
         basket,cart_count = getuserbasket()
-        return render_template('Accountpage.html', user_orders=user_orders,email=email,password=password,password_changed=password_changed, cart_count=cart_count)
+        return render_template('Accountpage.html', user_orders=user_orders, email=email, password=password, password_changed=password_changed, cart_count=cart_count)
     else:
         return redirect(url_for('login'))
 @app.route('/cart')
@@ -85,7 +85,7 @@ def cart():
             'name': iteminfo[0][1],
             'quantity': 1,
             'price': iteminfo[0][3],
-            'image_url': f'/static/images/{iteminfo[0][0]}.png'
+            'image_url': f'/static/images/product{iteminfo[0][0]}.png'
         }
         items.append(item_dict)
     return render_template('cart.html', items=items, cart_count=cart_count)
@@ -149,6 +149,25 @@ def addtocartfromabout(id):
             cart.append(id)
             session['cart'] = cart
     return render_template('about.html', id=id, cart_count=cart_count+1)
+@app.route('/add-to-cart-from-product/<int:id>', methods=['GET', 'POST'])
+def addtocartfromproducts(id):
+    basket,cart_count = getuserbasket()
+    if 'logged_in' in session and session['logged_in'] == True:
+        userid = session.get('user_id')
+        try:
+            addtobasket(userid, id)
+        except:
+            return render_template('product.html', id=id, cart_count=cart_count)
+    else:
+        if 'cart' in session:
+            cart = session['cart']
+            cart.append(id)
+            session['cart'] = cart
+        else:
+            cart = []
+            cart.append(id)
+            session['cart'] = cart
+    return render_template('product.html', id=id, cart_count=cart_count+1)
 
 @app.route('/removefromcart/<int:id>')
 def removefromcart(id):

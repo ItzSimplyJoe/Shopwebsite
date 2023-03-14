@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/product.css')}}">
     <title>Document</title>
 </head>
 <body>
@@ -26,37 +26,61 @@
                 <h2>Item Added to Cart!</h2>
                 <button id="popup-close-button" class="popup-close-button">Close</button>
             </div>
-    <div class="mainproducts">
-        <div class="featuredproducts">
-            hallo world
-        </div class = "featuredproducts">
-        <div class="products">
-            <div class="product1">
-                hello
-                <div class="footerforproduct">
-                    wow
-                </div>
+
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="{{url_for('static', filename='images/product1.png')}}" alt="">
             </div>
-            <div class="product2">
-                hello
-                <div class="footerforproduct">
-                    wow
-                </div>
-            </div>
-            <div class="product3">
-                hello
-                <div class="footerforproduct">
-                    wow
-                </div>
-            </div>
-            <div class="product4">
-                hello
-                <div class="footerforproduct">
-                    wow
-                </div>
+            <div class="product-info">
+                <h1>Blue Denim Jacket</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+                <h2>$100</h2>
+                <form action="{{ url_for('addtocartfromproducts', id=1) }}" method="POST">
+                    <button type="submit">Add to Cart</button>
+                </form>
             </div>
         </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="{{url_for('static', filename='images/product2.png')}}" alt="">
+            </div>
+            <div class="product-info">
+                <h1>Product 2</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+                <h2>$200</h2>
+                <form action="{{ url_for('addtocartfromproducts', id=2) }}" method="POST">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="{{url_for('static', filename='images/product3.png')}}" alt="">
+            </div>
+            <div class="product-info">
+                <h1>Product 3</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, quae.</p>
+                <h2>$300</h2>
+                <form action="{{ url_for('addtocartfromproducts', id=3) }}" method="POST">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="{{url_for('static', filename='images/product4.png')}}" alt="">
+            </div>
+            <div class="product-info">
+                <h1>Product 4</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+                <h2>$400</h2>
+                <form action="{{ url_for('addtocartfromproducts', id=4) }}" method="POST">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
         </div>
 
+    </div>
 </body>
 </html>

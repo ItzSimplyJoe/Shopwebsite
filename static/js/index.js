@@ -4,7 +4,7 @@
 		var items = item.querySelectorAll('li'),
         current = 0,
         autoUpdate = true,
-        timeTrans = 4000;
+        timeTrans = 8000;
         
 		var nav = document.createElement('nav');
 		nav.className = 'nav_arrows';
